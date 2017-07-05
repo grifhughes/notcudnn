@@ -6,20 +6,20 @@
 const int trsize = 60000;
 
 /* net */
-const int features = 784;
-const int hidden = 1000;
-const int classes = 10;
-const int train_iter = 1000; 
-const int batch_size = 256;
-const float reg = 0.5f;
-const float lrate = 0.001f;
-const float regularization = 1.0f - ((lrate * reg) / trsize);
+static const int features = 784;
+static const int hidden = 1000;
+static const int classes = 10;
+static const int train_iter = 1000; 
+static const int batch_size = 256;
+static const float reg = 0.5f;
+static const float lrate = 0.001f;
+static const float regularization = 1.0f - ((lrate * reg) / trsize);
 
 /* gpu */
-const int ntpb = 512; 
-const float neg = -1.0f;
-const float alph = 1.0f;
-const float bet = 0.0f;
+static const int ntpb = 512; 
+static const float neg = -1.0f;
+static const float alph = 1.0f;
+static const float bet = 0.0f;
 
 __device__ float drelu(float x)
 {

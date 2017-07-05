@@ -3,10 +3,27 @@
 struct iod *iod_create(int f, int cl, int tr)
 {
         struct iod *io;
+
         cudaMallocManaged(&io, sizeof(struct iod));
+        if(!io) {
+                fprintf(stderr, "alloc failed, exiting...");
+                exit(-1);
+        }
         cudaMallocManaged(&(io->i), sizeof(float) * f * tr);
+        if(!io->i) {
+                fprintf(stderr, "alloc failed, exiting...");
+                exit(-1);
+        }
         cudaMallocManaged(&(io->t), sizeof(float) * cl * tr);
+        if(!io->t) {
+                fprintf(stderr, "alloc failed, exiting...");
+                exit(-1);
+        }
         cudaMallocManaged(&(io->c), sizeof(int) * tr);
+        if(!io->c) {
+                fprintf(stderr, "alloc failed, exiting...");
+                exit(-1);
+        }
         cudaMemset((void **)&(io->t), 0, sizeof(float) * cl * tr);
         io->features = f;
         io->classes = cl;

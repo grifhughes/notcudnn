@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int blk_len = 4096;
+static const int blk_len = 4096;
 #define IDX2C(i,j,ld) (((j)*(ld))+(i))
 
 struct iod {
